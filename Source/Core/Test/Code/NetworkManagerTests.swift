@@ -255,7 +255,7 @@ class NetworkManagerTests: XCTestCase {
         })
         
         
-        manager.authenticator = { (response, data) -> AuthenticationAction in
+        manager.authenticator = { (request, response, data) -> AuthenticationAction in
             if response!.statusCode == 401 {
                 return AuthenticationAction.authenticate({ (networkManager, completion) in
                     OHHTTPStubs.removeStub(stub401Response)
@@ -291,7 +291,7 @@ class NetworkManagerTests: XCTestCase {
                 return expectedStubResponse
         })
         
-        manager.authenticator = { (response, data) -> AuthenticationAction in
+        manager.authenticator = { (request, response, data) -> AuthenticationAction in
             return AuthenticationAction.authenticate({ (networkManager, completion) in
                 OHHTTPStubs.removeStub(stub401Response)
                 return completion(false)

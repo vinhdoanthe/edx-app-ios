@@ -23,6 +23,7 @@ public struct LoginAPI {
         return NetworkRequest(
             method: .POST,
             path: "/oauth2/access_token/",
+            requiresAuth: true,
             body: RequestBody.formEncoded(body),
             deserializer: .jsonResponse(refreshTokenDeserializer)
         )

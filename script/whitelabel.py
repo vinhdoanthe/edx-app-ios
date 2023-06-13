@@ -246,7 +246,7 @@ def main():
     logging.basicConfig(level=log_level)
 
     with open(args.config_file) as f:
-        config = yaml.load(f) or {}
+        config = yaml.safe_load(f) or {}
 
     # Use the config_file's directory as the default config_dir
     config.setdefault('config_dir', os.path.dirname(args.config_file))
